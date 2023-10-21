@@ -9,7 +9,7 @@ namespace GMS.Modul1.Controllers
 {
     //[Authorize]
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("[controller]/[action]")] 
     public class StudentController : ControllerBase
     {
         private readonly ApplicationDbContext _dbContext;
