@@ -4,6 +4,7 @@ using GMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231021193827_bezSlike")]
+    partial class bezSlike
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,26 +23,6 @@ namespace GMS.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("GMS.Entities.Models.Clanarina", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<float>("Cijena")
-                        .HasColumnType("real");
-
-                    b.Property<string>("Naziv")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Clanarina");
-                });
 
             modelBuilder.Entity("GMS.Entities.Models.Grad", b =>
                 {
@@ -101,27 +83,6 @@ namespace GMS.Migrations
                     b.HasIndex("GradID");
 
                     b.ToTable("Korisnik");
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Korisnik_Clanarina", b =>
-                {
-                    b.Property<int>("ClanarinaID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("KorisnikID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DatumUplate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DatumIsteka")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ClanarinaID", "KorisnikID", "DatumUplate");
-
-                    b.HasIndex("KorisnikID");
-
-                    b.ToTable("Korisnik_Clanarina");
                 });
 
             modelBuilder.Entity("GMS.Modul0_Autentifikacija.Models.AutentifikacijaToken", b =>
@@ -363,25 +324,6 @@ namespace GMS.Migrations
                     b.Navigation("Grad");
                 });
 
-            modelBuilder.Entity("GMS.Entities.Models.Korisnik_Clanarina", b =>
-                {
-                    b.HasOne("GMS.Entities.Models.Clanarina", "Clanarina")
-                        .WithMany("Korisnici")
-                        .HasForeignKey("ClanarinaID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GMS.Entities.Models.Korisnik", "Korisnik")
-                        .WithMany("Clanarine")
-                        .HasForeignKey("KorisnikID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Clanarina");
-
-                    b.Navigation("Korisnik");
-                });
-
             modelBuilder.Entity("GMS.Modul0_Autentifikacija.Models.AutentifikacijaToken", b =>
                 {
                     b.HasOne("GMS.Modul0_Autentifikacija.Models.KorisnickiNalog", "korisnickiNalog")
@@ -447,16 +389,6 @@ namespace GMS.Migrations
                         .IsRequired();
 
                     b.Navigation("OpstinaRodjenja");
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Clanarina", b =>
-                {
-                    b.Navigation("Korisnici");
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Korisnik", b =>
-                {
-                    b.Navigation("Clanarine");
                 });
 #pragma warning restore 612, 618
         }

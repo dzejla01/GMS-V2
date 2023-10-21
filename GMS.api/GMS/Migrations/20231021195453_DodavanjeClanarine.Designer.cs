@@ -4,6 +4,7 @@ using GMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231021195453_DodavanjeClanarine")]
+    partial class DodavanjeClanarine
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,13 +113,7 @@ namespace GMS.Migrations
                     b.Property<int>("KorisnikID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DatumUplate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DatumIsteka")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ClanarinaID", "KorisnikID", "DatumUplate");
+                    b.HasKey("ClanarinaID", "KorisnikID");
 
                     b.HasIndex("KorisnikID");
 

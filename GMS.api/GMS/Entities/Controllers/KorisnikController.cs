@@ -25,12 +25,12 @@ namespace GMS.Entities.Controllers
             {
                 Ime = x.Ime,
                 Prezime = x.Prezime,
-                //Username = x.Username,
-                //Password = x.Password,
-                //Slika = x.Slika,
-                //BrojTelefona = x.BrojTelefona,
-                //Tezina = x.Tezina,
-                //Visina = x.Visina,
+                Username = x.Username,
+                Password = x.Password,
+                // Slika = x.Slika,
+                BrojTelefona = x.BrojTelefona,
+                Tezina = x.Tezina,
+                Visina = x.Visina,
                 GradID = x.GradID
             };
 
@@ -49,13 +49,12 @@ namespace GMS.Entities.Controllers
                     ID = x.ID,
                     Ime = x.Ime,
                     Prezime = x.Prezime,
-                    //Username = x.Username,
-                    //Password = x.Password,
-                    //Slika = x.Slika,
-                    //BrojTelefona = x.BrojTelefona,
-                    //Visina = x.Visina,
-                    //Tezina = x.Tezina,
-                    //GradID = x.GradID,
+                    Username = x.Username,
+                    Password = x.Password,
+                    // Slika = x.Slika,
+                    BrojTelefona = x.BrojTelefona,
+                    Visina = x.Visina,
+                    Tezina = x.Tezina,
                     Grad = x.Grad
                 }
                 ).AsQueryable();

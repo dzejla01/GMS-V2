@@ -17,8 +17,8 @@ namespace GMS.Entities.Controllers
         }
 
         //httpGet za dohvatanje
-        //httpPut za modifikaciju
         //httpPost za dodavanje 
+        //httpPut za modifikaciju
         //httpDelete za brisanje 
         //httpPatch ako je izmjena samo jednog atributa 
 
@@ -33,9 +33,9 @@ namespace GMS.Entities.Controllers
                     ID = x.ID,
                     Naziv = x.Naziv
                 }
-                ).AsQueryable();
+                ).ToList();
 
-            return sviGradovi.ToList();
+            return sviGradovi;
         }
 
         [HttpGet]
