@@ -7,43 +7,43 @@ namespace GMS.Entities.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class ClanarinaController : ControllerBase
+    public class Trener_SeminarController : ControllerBase
     {
         private readonly ApplicationDbContext db;
-        public ClanarinaController(ApplicationDbContext dbContext)
+        public Trener_SeminarController(ApplicationDbContext dbContext)
         {
             db = dbContext;
         }
 
         [HttpPost]
-        public Clanarina Add([FromBody] ClanarinaAddVM x)
+
+        public Trener_Seminar Add([FromBody] Trener_SeminarAddVM x)
         {
-            var novaClanarina = new Clanarina
+            var noviZapis = new Trener_Seminar
             {
-                Naziv = x.Naziv,
-                Cijena = x.Cijena
+                TrenerID = x.TrenerID,
+                SeminarID = x.SeminarID,
+
             };
 
-            db.Clanarina.Add(novaClanarina);
+            db.Add(noviZapis);
             db.SaveChanges();
-            return novaClanarina;
-
+            return noviZapis;
         }
 
         [HttpGet]
 
         public object GetAll()
         {
-            var sveClanarine = db.Clanarina
+            var noviZapis = db.Trener_Seminar
                 .Select(x => new
                 {
-                    Naziv = x.Naziv,
-                    Cijena = x.Cijena
+                    Trener = x.Trener,
+                    Seminar = x.Seminar,
                 }
                 ).ToList();
 
-            return sveClanarine;
+            return noviZapis;
         }
-
     }
 }

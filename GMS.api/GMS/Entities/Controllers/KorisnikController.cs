@@ -2,6 +2,7 @@
 using GMS.Entities.Models;
 using GMS.Entities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GMS.Entities.Controllers
 {
@@ -31,7 +32,9 @@ namespace GMS.Entities.Controllers
                 BrojTelefona = x.BrojTelefona,
                 Tezina = x.Tezina,
                 Visina = x.Visina,
-                GradID = x.GradID
+                GradID = x.GradID,
+                SpolID = x.SpolID,
+                TeretanaID = x.TeretanaID
             };
 
             db.Add(noviZapis);
@@ -55,12 +58,16 @@ namespace GMS.Entities.Controllers
                     BrojTelefona = x.BrojTelefona,
                     Visina = x.Visina,
                     Tezina = x.Tezina,
-                    Grad = x.Grad
+                    Grad = x.Grad,
+                    Spol = x.Spol,
+                    Teretana = x.Teretana
                 }
                 ).AsQueryable();
 
 
             return sviKorisnici.ToList();
         }
+
+        
     }
 }

@@ -4,6 +4,7 @@ using GMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231022034027_korisnik_nutricionistTest")]
+    partial class korisnik_nutricionistTest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -240,21 +242,6 @@ namespace GMS.Migrations
                     b.ToTable("Nutricionist");
                 });
 
-            modelBuilder.Entity("GMS.Entities.Models.Nutricionist_Seminar", b =>
-                {
-                    b.Property<int>("NutricionistID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SeminarID")
-                        .HasColumnType("int");
-
-                    b.HasKey("NutricionistID", "SeminarID");
-
-                    b.HasIndex("SeminarID");
-
-                    b.ToTable("Nutricionist_Seminar");
-                });
-
             modelBuilder.Entity("GMS.Entities.Models.Seminar", b =>
                 {
                     b.Property<int>("ID")
@@ -439,25 +426,6 @@ namespace GMS.Migrations
                     b.Navigation("Korisnik");
 
                     b.Navigation("Trener");
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Nutricionist_Seminar", b =>
-                {
-                    b.HasOne("GMS.Entities.Models.Nutricionist", "Nutricionist")
-                        .WithMany()
-                        .HasForeignKey("NutricionistID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GMS.Entities.Models.Seminar", "Seminar")
-                        .WithMany()
-                        .HasForeignKey("SeminarID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Nutricionist");
-
-                    b.Navigation("Seminar");
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Trener_Seminar", b =>

@@ -4,6 +4,7 @@ using GMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231022024115_treninziTest")]
+    partial class treninziTest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -176,24 +178,6 @@ namespace GMS.Migrations
                     b.ToTable("Korisnik_Clanarina");
                 });
 
-            modelBuilder.Entity("GMS.Entities.Models.Korisnik_Nutricionist", b =>
-                {
-                    b.Property<int>("KorisnikID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NutricionistID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DatumTermina")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("KorisnikID", "NutricionistID", "DatumTermina");
-
-                    b.HasIndex("NutricionistID");
-
-                    b.ToTable("Korisnik_Nutricionst");
-                });
-
             modelBuilder.Entity("GMS.Entities.Models.Korisnik_Trener", b =>
                 {
                     b.Property<int>("KorisnikID")
@@ -210,73 +194,7 @@ namespace GMS.Migrations
 
                     b.HasKey("KorisnikID", "TrenerID", "DatumTermina");
 
-                    b.HasIndex("TrenerID");
-
                     b.ToTable("Korisnik_Trener");
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Nutricionist", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<string>("BrojTelefona")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Prezime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Nutricionist");
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Nutricionist_Seminar", b =>
-                {
-                    b.Property<int>("NutricionistID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SeminarID")
-                        .HasColumnType("int");
-
-                    b.HasKey("NutricionistID", "SeminarID");
-
-                    b.HasIndex("SeminarID");
-
-                    b.ToTable("Nutricionist_Seminar");
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Seminar", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<DateTime>("Datum")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Predavac")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tema")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Seminar");
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Spol", b =>
@@ -342,21 +260,6 @@ namespace GMS.Migrations
                     b.ToTable("Trener");
                 });
 
-            modelBuilder.Entity("GMS.Entities.Models.Trener_Seminar", b =>
-                {
-                    b.Property<int>("TrenerID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SeminarID")
-                        .HasColumnType("int");
-
-                    b.HasKey("TrenerID", "SeminarID");
-
-                    b.HasIndex("SeminarID");
-
-                    b.ToTable("Trener_Seminar");
-                });
-
             modelBuilder.Entity("GMS.Entities.Models.Korisnik", b =>
                 {
                     b.HasOne("GMS.Entities.Models.Grad", "Grad")
@@ -401,82 +304,6 @@ namespace GMS.Migrations
                     b.Navigation("Clanarina");
 
                     b.Navigation("Korisnik");
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Korisnik_Nutricionist", b =>
-                {
-                    b.HasOne("GMS.Entities.Models.Korisnik", "Korisnik")
-                        .WithMany()
-                        .HasForeignKey("KorisnikID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GMS.Entities.Models.Nutricionist", "Nutricionist")
-                        .WithMany()
-                        .HasForeignKey("NutricionistID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Korisnik");
-
-                    b.Navigation("Nutricionist");
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Korisnik_Trener", b =>
-                {
-                    b.HasOne("GMS.Entities.Models.Korisnik", "Korisnik")
-                        .WithMany()
-                        .HasForeignKey("KorisnikID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GMS.Entities.Models.Trener", "Trener")
-                        .WithMany()
-                        .HasForeignKey("TrenerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Korisnik");
-
-                    b.Navigation("Trener");
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Nutricionist_Seminar", b =>
-                {
-                    b.HasOne("GMS.Entities.Models.Nutricionist", "Nutricionist")
-                        .WithMany()
-                        .HasForeignKey("NutricionistID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GMS.Entities.Models.Seminar", "Seminar")
-                        .WithMany()
-                        .HasForeignKey("SeminarID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Nutricionist");
-
-                    b.Navigation("Seminar");
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Trener_Seminar", b =>
-                {
-                    b.HasOne("GMS.Entities.Models.Seminar", "Seminar")
-                        .WithMany()
-                        .HasForeignKey("SeminarID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GMS.Entities.Models.Trener", "Trener")
-                        .WithMany()
-                        .HasForeignKey("TrenerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Seminar");
-
-                    b.Navigation("Trener");
                 });
 #pragma warning restore 612, 618
         }

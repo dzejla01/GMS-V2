@@ -9,6 +9,6 @@ namespace GMS.Entities.Models
         public string Naziv { get; set; }
         public float Cijena { get; set; }
 
-        public ICollection<Korisnik_Clanarina> Korisnici { get; set; }
+        // public ICollection<Korisnik_Clanarina> Korisnici { get; set; }
     }
 }
