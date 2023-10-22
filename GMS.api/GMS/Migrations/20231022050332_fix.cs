@@ -4,7 +4,7 @@
 
 namespace GMS.Migrations
 {
-    public partial class trenerFix : Migration
+    public partial class fix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

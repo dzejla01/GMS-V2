@@ -46,7 +46,7 @@ namespace GMS.Entities.Controllers
 
         public object GetAll()
         {
-            var sviKorisnici = db.Korisnik.OrderBy(x => x.Ime)
+            var sviKorisnici = db.Korisnik.Include("Spol").Include("Grad").Include("Teretana").OrderBy(x => x.ID)
                 .Select(x => new
                 {
                     ID = x.ID,

@@ -27,7 +27,7 @@ namespace GMS.Entities.Controllers
 
         public object GetAll()
         {
-            var sviGradovi = db.Grad.OrderBy(x => x.Naziv)
+            var sviGradovi = db.Grad.OrderBy(x => x.ID)
                 .Select(x => new
                 {
                     ID = x.ID,

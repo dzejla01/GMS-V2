@@ -2,15 +2,16 @@
 using GMS.Entities.Models;
 using GMS.Entities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GMS.Entities.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")] 
-    public class Clanarina_KorisnikController : ControllerBase
+    public class Korisnik_ClanarinaController : ControllerBase
     {
         private readonly ApplicationDbContext db;
-        public Clanarina_KorisnikController(ApplicationDbContext dbContext)
+        public Korisnik_ClanarinaController(ApplicationDbContext dbContext)
         {
             db = dbContext;
         }
@@ -37,7 +38,7 @@ namespace GMS.Entities.Controllers
 
         public object GetAll()
         {
-            var sviKorisniciClanarine = db.Korisnik_Clanarina
+            var sviKorisniciClanarine = db.Korisnik_Clanarina.Include("Korisnik").Include("Clanarina")
                 .Select(x => new
                 {
                     Korisnik = x.Korisnik,
