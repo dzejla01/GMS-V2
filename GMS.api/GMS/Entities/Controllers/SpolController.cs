@@ -23,7 +23,7 @@ namespace GMS.Entities.Controllers
 
         public object GetAll()
         {
-            var sviZapisi = db.Spol.OrderBy(x => x.Naziv)
+            var sviZapisi = db.Spol.OrderBy(x => x.ID)
                 .Select(x => new
                 {
                     ID = x.ID,

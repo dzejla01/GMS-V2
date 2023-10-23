@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231022050332_fix")]
-    partial class fix
+    [Migration("20231023060518_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -101,6 +101,168 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Grad");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Naziv = "Mostar"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Naziv = "Sarajevo"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Naziv = "Zenica"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Naziv = "Livno"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Naziv = "Tuzla"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Naziv = "Bihać"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            Naziv = "Banja Luka"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            Naziv = "Zavidovići"
+                        },
+                        new
+                        {
+                            ID = 9,
+                            Naziv = "Maglaj"
+                        },
+                        new
+                        {
+                            ID = 10,
+                            Naziv = "Jajce"
+                        },
+                        new
+                        {
+                            ID = 11,
+                            Naziv = "Travnik"
+                        },
+                        new
+                        {
+                            ID = 12,
+                            Naziv = "Zvornik"
+                        },
+                        new
+                        {
+                            ID = 13,
+                            Naziv = "Doboj"
+                        },
+                        new
+                        {
+                            ID = 14,
+                            Naziv = "Višegrad"
+                        },
+                        new
+                        {
+                            ID = 15,
+                            Naziv = "Podgorica"
+                        },
+                        new
+                        {
+                            ID = 16,
+                            Naziv = "Konjic"
+                        },
+                        new
+                        {
+                            ID = 17,
+                            Naziv = "Bijelo Polje"
+                        },
+                        new
+                        {
+                            ID = 18,
+                            Naziv = "Zvornik"
+                        },
+                        new
+                        {
+                            ID = 19,
+                            Naziv = "Stolac"
+                        },
+                        new
+                        {
+                            ID = 20,
+                            Naziv = "Novi Sad"
+                        },
+                        new
+                        {
+                            ID = 21,
+                            Naziv = "Sjenica"
+                        },
+                        new
+                        {
+                            ID = 22,
+                            Naziv = "Novi Pazar"
+                        },
+                        new
+                        {
+                            ID = 23,
+                            Naziv = "Prijepolje"
+                        },
+                        new
+                        {
+                            ID = 24,
+                            Naziv = "Skoplje"
+                        },
+                        new
+                        {
+                            ID = 25,
+                            Naziv = "Ljubljana"
+                        },
+                        new
+                        {
+                            ID = 26,
+                            Naziv = "Maribor"
+                        },
+                        new
+                        {
+                            ID = 27,
+                            Naziv = "Zagreb"
+                        },
+                        new
+                        {
+                            ID = 28,
+                            Naziv = "Rijeka"
+                        },
+                        new
+                        {
+                            ID = 29,
+                            Naziv = "Split"
+                        },
+                        new
+                        {
+                            ID = 30,
+                            Naziv = "Sofija"
+                        },
+                        new
+                        {
+                            ID = 31,
+                            Naziv = "Ankara"
+                        },
+                        new
+                        {
+                            ID = 32,
+                            Naziv = "Istanbul"
+                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Korisnik", b =>
@@ -194,6 +356,27 @@ namespace GMS.Migrations
                     b.HasIndex("NutricionistID");
 
                     b.ToTable("Korisnik_Nutricionst");
+                });
+
+            modelBuilder.Entity("GMS.Entities.Models.Korisnik_Suplement", b =>
+                {
+                    b.Property<int>("SuplementID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("KorisnikID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DatumVrijemeNarudzbe")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Kolicina")
+                        .HasColumnType("int");
+
+                    b.HasKey("SuplementID", "KorisnikID", "DatumVrijemeNarudzbe");
+
+                    b.HasIndex("KorisnikID");
+
+                    b.ToTable("Korisnik_Suplement");
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Korisnik_Trener", b =>
@@ -296,6 +479,26 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Spol");
+                });
+
+            modelBuilder.Entity("GMS.Entities.Models.Suplement", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<float>("Cijena")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Naziv")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Suplement");
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Teretana", b =>
@@ -422,6 +625,25 @@ namespace GMS.Migrations
                     b.Navigation("Korisnik");
 
                     b.Navigation("Nutricionist");
+                });
+
+            modelBuilder.Entity("GMS.Entities.Models.Korisnik_Suplement", b =>
+                {
+                    b.HasOne("GMS.Entities.Models.Korisnik", "Korisnik")
+                        .WithMany()
+                        .HasForeignKey("KorisnikID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GMS.Entities.Models.Suplement", "Suplement")
+                        .WithMany()
+                        .HasForeignKey("SuplementID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Korisnik");
+
+                    b.Navigation("Suplement");
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Korisnik_Trener", b =>

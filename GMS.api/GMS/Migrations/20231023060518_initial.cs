@@ -108,6 +108,20 @@ namespace GMS.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Suplement",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Naziv = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Cijena = table.Column<float>(type: "real", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Suplement", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Teretana",
                 columns: table => new
                 {
@@ -276,6 +290,32 @@ namespace GMS.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Korisnik_Suplement",
+                columns: table => new
+                {
+                    KorisnikID = table.Column<int>(type: "int", nullable: false),
+                    SuplementID = table.Column<int>(type: "int", nullable: false),
+                    DatumVrijemeNarudzbe = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Kolicina = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Korisnik_Suplement", x => new { x.SuplementID, x.KorisnikID, x.DatumVrijemeNarudzbe });
+                    table.ForeignKey(
+                        name: "FK_Korisnik_Suplement_Korisnik_KorisnikID",
+                        column: x => x.KorisnikID,
+                        principalTable: "Korisnik",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Korisnik_Suplement_Suplement_SuplementID",
+                        column: x => x.SuplementID,
+                        principalTable: "Suplement",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Korisnik_Trener",
                 columns: table => new
                 {
@@ -299,6 +339,45 @@ namespace GMS.Migrations
                         principalTable: "Trener",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Grad",
+                columns: new[] { "ID", "Naziv" },
+                values: new object[,]
+                {
+                    { 1, "Mostar" },
+                    { 2, "Sarajevo" },
+                    { 3, "Zenica" },
+                    { 4, "Livno" },
+                    { 5, "Tuzla" },
+                    { 6, "Bihać" },
+                    { 7, "Banja Luka" },
+                    { 8, "Zavidovići" },
+                    { 9, "Maglaj" },
+                    { 10, "Jajce" },
+                    { 11, "Travnik" },
+                    { 12, "Zvornik" },
+                    { 13, "Doboj" },
+                    { 14, "Višegrad" },
+                    { 15, "Podgorica" },
+                    { 16, "Konjic" },
+                    { 17, "Bijelo Polje" },
+                    { 18, "Zvornik" },
+                    { 19, "Stolac" },
+                    { 20, "Novi Sad" },
+                    { 21, "Sjenica" },
+                    { 22, "Novi Pazar" },
+                    { 23, "Prijepolje" },
+                    { 24, "Skoplje" },
+                    { 25, "Ljubljana" },
+                    { 26, "Maribor" },
+                    { 27, "Zagreb" },
+                    { 28, "Rijeka" },
+                    { 29, "Split" },
+                    { 30, "Sofija" },
+                    { 31, "Ankara" },
+                    { 32, "Istanbul" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -325,6 +404,11 @@ namespace GMS.Migrations
                 name: "IX_Korisnik_Nutricionst_NutricionistID",
                 table: "Korisnik_Nutricionst",
                 column: "NutricionistID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Korisnik_Suplement_KorisnikID",
+                table: "Korisnik_Suplement",
+                column: "KorisnikID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Korisnik_Trener_TrenerID",
@@ -357,6 +441,9 @@ namespace GMS.Migrations
                 name: "Korisnik_Nutricionst");
 
             migrationBuilder.DropTable(
+                name: "Korisnik_Suplement");
+
+            migrationBuilder.DropTable(
                 name: "Korisnik_Trener");
 
             migrationBuilder.DropTable(
@@ -367,6 +454,9 @@ namespace GMS.Migrations
 
             migrationBuilder.DropTable(
                 name: "Clanarina");
+
+            migrationBuilder.DropTable(
+                name: "Suplement");
 
             migrationBuilder.DropTable(
                 name: "Korisnik");

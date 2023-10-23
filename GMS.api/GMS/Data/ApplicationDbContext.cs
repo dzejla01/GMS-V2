@@ -1,4 +1,5 @@
-﻿using GMS.Entities.Models;
+﻿using GMS.Configuration;
+using GMS.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GMS.Data
@@ -17,6 +18,15 @@ namespace GMS.Data
             modelBuilder.Entity<Korisnik_Nutricionist>().HasKey(x => new { x.KorisnikID, x.NutricionistID, x.DatumTermina });
 
             modelBuilder.Entity<Nutricionist_Seminar>().HasKey(x => new { x.NutricionistID, x.SeminarID });
+
+            modelBuilder.Entity<Korisnik_Suplement>().HasKey(x => new { x.SuplementID, x.KorisnikID, x.DatumVrijemeNarudzbe });
+
+
+
+
+
+
+            modelBuilder.ApplyConfiguration(new GradConfiguration());
         }
         public DbSet<Grad> Grad { get; set; }
         public DbSet<Spol> Spol { get; set; }
@@ -33,6 +43,8 @@ namespace GMS.Data
         public DbSet<Nutricionist> Nutricionist { get; set; }
         public DbSet<Korisnik_Nutricionist> Korisnik_Nutricionst { get; set; }
         public DbSet<Nutricionist_Seminar> Nutricionist_Seminar { get; set; }
+        public DbSet<Suplement> Suplement { get; set; }
+        public DbSet<Korisnik_Suplement> Korisnik_Suplement { get; set; }
 
 
         public ApplicationDbContext(
