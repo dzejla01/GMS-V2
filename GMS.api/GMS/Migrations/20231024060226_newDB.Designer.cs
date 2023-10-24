@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231023060518_initial")]
-    partial class initial
+    [Migration("20231024060226_newDB")]
+    partial class newDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,6 +43,20 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Administrator");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Password = "admin",
+                            Username = "admin"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Password = "host",
+                            Username = "host"
+                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Clanarina", b =>
@@ -63,6 +77,38 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Clanarina");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Cijena = 50f,
+                            Naziv = "Obična"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Cijena = 40f,
+                            Naziv = "Studenti"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Cijena = 30f,
+                            Naziv = "Parovi"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Cijena = 25f,
+                            Naziv = "Djeca"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Cijena = 25f,
+                            Naziv = "Penzioneri"
+                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.FAQ", b =>
@@ -106,162 +152,162 @@ namespace GMS.Migrations
                         new
                         {
                             ID = 1,
-                            Naziv = "Mostar"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Naziv = "Sarajevo"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Naziv = "Zenica"
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Naziv = "Livno"
-                        },
-                        new
-                        {
-                            ID = 5,
-                            Naziv = "Tuzla"
-                        },
-                        new
-                        {
-                            ID = 6,
-                            Naziv = "Bihać"
-                        },
-                        new
-                        {
-                            ID = 7,
                             Naziv = "Banja Luka"
                         },
                         new
                         {
+                            ID = 2,
+                            Naziv = "Bihać"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Naziv = "Bijeljina"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Naziv = "Bosnaska Krupa"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Naziv = "Cazin"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Naziv = "Čapljina"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            Naziv = "Drventa"
+                        },
+                        new
+                        {
                             ID = 8,
-                            Naziv = "Zavidovići"
-                        },
-                        new
-                        {
-                            ID = 9,
-                            Naziv = "Maglaj"
-                        },
-                        new
-                        {
-                            ID = 10,
-                            Naziv = "Jajce"
-                        },
-                        new
-                        {
-                            ID = 11,
-                            Naziv = "Travnik"
-                        },
-                        new
-                        {
-                            ID = 12,
-                            Naziv = "Zvornik"
-                        },
-                        new
-                        {
-                            ID = 13,
                             Naziv = "Doboj"
                         },
                         new
                         {
-                            ID = 14,
-                            Naziv = "Višegrad"
+                            ID = 9,
+                            Naziv = "Goražde"
                         },
                         new
                         {
-                            ID = 15,
-                            Naziv = "Podgorica"
+                            ID = 10,
+                            Naziv = "Gračanica"
                         },
                         new
                         {
-                            ID = 16,
+                            ID = 11,
+                            Naziv = "Gradačac"
+                        },
+                        new
+                        {
+                            ID = 12,
+                            Naziv = "Gradiška"
+                        },
+                        new
+                        {
+                            ID = 13,
                             Naziv = "Konjic"
                         },
                         new
                         {
+                            ID = 14,
+                            Naziv = "Laktaši"
+                        },
+                        new
+                        {
+                            ID = 15,
+                            Naziv = "Livno"
+                        },
+                        new
+                        {
+                            ID = 16,
+                            Naziv = "Lukavac"
+                        },
+                        new
+                        {
                             ID = 17,
-                            Naziv = "Bijelo Polje"
+                            Naziv = "Ljubuški"
                         },
                         new
                         {
                             ID = 18,
-                            Naziv = "Zvornik"
+                            Naziv = "Mostar"
                         },
                         new
                         {
                             ID = 19,
-                            Naziv = "Stolac"
+                            Naziv = "Orašje"
                         },
                         new
                         {
                             ID = 20,
-                            Naziv = "Novi Sad"
+                            Naziv = "Prijedor"
                         },
                         new
                         {
                             ID = 21,
-                            Naziv = "Sjenica"
+                            Naziv = "Prnjavor"
                         },
                         new
                         {
                             ID = 22,
-                            Naziv = "Novi Pazar"
+                            Naziv = "Sarajevo"
                         },
                         new
                         {
                             ID = 23,
-                            Naziv = "Prijepolje"
+                            Naziv = "Srebrenik"
                         },
                         new
                         {
                             ID = 24,
-                            Naziv = "Skoplje"
+                            Naziv = "Stolac"
                         },
                         new
                         {
                             ID = 25,
-                            Naziv = "Ljubljana"
+                            Naziv = "Široki Brijeg"
                         },
                         new
                         {
                             ID = 26,
-                            Naziv = "Maribor"
+                            Naziv = "Trebinje"
                         },
                         new
                         {
                             ID = 27,
-                            Naziv = "Zagreb"
+                            Naziv = "Tuzla"
                         },
                         new
                         {
                             ID = 28,
-                            Naziv = "Rijeka"
+                            Naziv = "Visoko"
                         },
                         new
                         {
                             ID = 29,
-                            Naziv = "Split"
+                            Naziv = "Zavidovići"
                         },
                         new
                         {
                             ID = 30,
-                            Naziv = "Sofija"
+                            Naziv = "Zenica"
                         },
                         new
                         {
                             ID = 31,
-                            Naziv = "Ankara"
+                            Naziv = "Zvornik"
                         },
                         new
                         {
                             ID = 32,
-                            Naziv = "Istanbul"
+                            Naziv = "Živinice"
                         });
                 });
 
@@ -479,6 +525,18 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Spol");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Naziv = "Muški"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Naziv = "Ženski"
+                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Suplement", b =>
@@ -513,13 +571,69 @@ namespace GMS.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("GradID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Naziv")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
+                    b.HasIndex("GradID");
+
                     b.ToTable("Teretana");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Adresa = "Patriotske lige bb",
+                            GradID = 22,
+                            Naziv = "ProGym Fitness Centar"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Adresa = "Novo naselje Zalik bb",
+                            GradID = 18,
+                            Naziv = "Bodyline Mostar"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Adresa = "Turalibegova 25a",
+                            GradID = 27,
+                            Naziv = "Body Control"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Adresa = "Veljka Mlađenovića bb",
+                            GradID = 1,
+                            Naziv = "Blue Line Fitness"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Adresa = "Trg Alije Izetbegovića 86",
+                            GradID = 30,
+                            Naziv = "ZEFIT Gym"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Adresa = "Sarajevska k-1",
+                            GradID = 2,
+                            Naziv = "Reflex Gym"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            Adresa = "Željeznička 2, Konjic",
+                            GradID = 13,
+                            Naziv = "No Limits Gym"
+                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Trener", b =>
@@ -682,6 +796,17 @@ namespace GMS.Migrations
                     b.Navigation("Nutricionist");
 
                     b.Navigation("Seminar");
+                });
+
+            modelBuilder.Entity("GMS.Entities.Models.Teretana", b =>
+                {
+                    b.HasOne("GMS.Entities.Models.Grad", "Grad")
+                        .WithMany()
+                        .HasForeignKey("GradID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Grad");
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Trener_Seminar", b =>

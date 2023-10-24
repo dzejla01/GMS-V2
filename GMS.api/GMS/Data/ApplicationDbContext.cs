@@ -27,6 +27,12 @@ namespace GMS.Data
 
 
             modelBuilder.ApplyConfiguration(new GradConfiguration());
+            modelBuilder.ApplyConfiguration(new SpolConfiguration());
+            modelBuilder.ApplyConfiguration(new ClanarinaConfiguration());
+            modelBuilder.ApplyConfiguration(new AdministratorConfiguration());
+            modelBuilder.ApplyConfiguration(new TeretanaConfiguration());
+            modelBuilder.ApplyConfiguration(new KorisnikConfiguration());
+            modelBuilder.ApplyConfiguration(new Korisnik_ClanarinaConfiguration());
         }
         public DbSet<Grad> Grad { get; set; }
         public DbSet<Spol> Spol { get; set; }
@@ -45,6 +51,8 @@ namespace GMS.Data
         public DbSet<Nutricionist_Seminar> Nutricionist_Seminar { get; set; }
         public DbSet<Suplement> Suplement { get; set; }
         public DbSet<Korisnik_Suplement> Korisnik_Suplement { get; set; }
+        public DbSet<Recenzija> Recenzija { get; set; }
+        public DbSet<Dobavljac> Dobavljac { get; set; }
 
 
         public ApplicationDbContext(

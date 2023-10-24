@@ -2,31 +2,27 @@
 using GMS.Entities.Models;
 using GMS.Entities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace GMS.Entities.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class SuplementController : Controller
+    public class DobavljacController : ControllerBase
     {
         private readonly ApplicationDbContext db;
-        public SuplementController(ApplicationDbContext dbContext)
+        public DobavljacController(ApplicationDbContext dbContext)
         {
             db = dbContext;
         }
 
         [HttpPost]
 
-        public Suplement Add([FromBody] SuplementAddVM x)
+        public Dobavljac Add([FromBody] DobavljacAddVM x)
         {
-            var noviZapis = new Suplement
+            var noviZapis = new Dobavljac
             {
-                Naziv = x.Naziv,
-                Cijena = x.Cijena,
-                DobavljacID = x.DobavljacID
-               
-
+                
+                Naziv = x.Naziv
             };
 
             db.Add(noviZapis);
@@ -38,18 +34,15 @@ namespace GMS.Entities.Controllers
 
         public object GetAll()
         {
-            var sviZapisi = db.Suplement.Include("Dobavljac")
+            var sviZapisi = db.Dobavljac
                 .Select(x => new
                 {
                     ID = x.ID,
-                    Naziv = x.Naziv,
-                    Cijena = x.Cijena,
-                    Dobavljac = x.Dobavljac
+                    Naziv = x.Naziv
                 }
                 ).ToList();
 
             return sviZapisi;
         }
-
     }
 }

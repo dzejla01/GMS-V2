@@ -4,6 +4,7 @@ using GMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231024063342_korisniciData")]
+    partial class korisniciData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,13 +83,13 @@ namespace GMS.Migrations
                         {
                             ID = 1,
                             Cijena = 50f,
-                            Naziv = "Basic"
+                            Naziv = "Obična"
                         },
                         new
                         {
                             ID = 2,
                             Cijena = 40f,
-                            Naziv = "Studentska"
+                            Naziv = "Studenti"
                         },
                         new
                         {
@@ -107,23 +109,6 @@ namespace GMS.Migrations
                             Cijena = 25f,
                             Naziv = "Penzioneri"
                         });
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Dobavljac", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<string>("Naziv")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Dobavljac");
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.FAQ", b =>
@@ -429,36 +414,6 @@ namespace GMS.Migrations
                     b.HasIndex("KorisnikID");
 
                     b.ToTable("Korisnik_Clanarina");
-
-                    b.HasData(
-                        new
-                        {
-                            ClanarinaID = 2,
-                            KorisnikID = 1,
-                            DatumUplate = new DateTime(2023, 9, 1, 9, 15, 0, 0, DateTimeKind.Unspecified),
-                            DatumIsteka = new DateTime(2023, 10, 1, 9, 15, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            ClanarinaID = 2,
-                            KorisnikID = 2,
-                            DatumUplate = new DateTime(2023, 9, 1, 9, 15, 0, 0, DateTimeKind.Unspecified),
-                            DatumIsteka = new DateTime(2023, 10, 1, 9, 15, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            ClanarinaID = 2,
-                            KorisnikID = 1,
-                            DatumUplate = new DateTime(2023, 10, 1, 7, 15, 0, 0, DateTimeKind.Unspecified),
-                            DatumIsteka = new DateTime(2023, 11, 1, 7, 15, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            ClanarinaID = 2,
-                            KorisnikID = 2,
-                            DatumUplate = new DateTime(2023, 10, 1, 7, 15, 0, 0, DateTimeKind.Unspecified),
-                            DatumIsteka = new DateTime(2023, 11, 1, 7, 15, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Korisnik_Nutricionist", b =>
@@ -561,35 +516,6 @@ namespace GMS.Migrations
                     b.ToTable("Nutricionist_Seminar");
                 });
 
-            modelBuilder.Entity("GMS.Entities.Models.Recenzija", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Ime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Prezime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tekst")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Zanimanje")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Recenzija");
-                });
-
             modelBuilder.Entity("GMS.Entities.Models.Seminar", b =>
                 {
                     b.Property<int>("ID")
@@ -654,16 +580,11 @@ namespace GMS.Migrations
                     b.Property<float>("Cijena")
                         .HasColumnType("real");
 
-                    b.Property<int>("DobavljacID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Naziv")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("DobavljacID");
 
                     b.ToTable("Suplement");
                 });
@@ -905,17 +826,6 @@ namespace GMS.Migrations
                     b.Navigation("Nutricionist");
 
                     b.Navigation("Seminar");
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Suplement", b =>
-                {
-                    b.HasOne("GMS.Entities.Models.Dobavljac", "Dobavljac")
-                        .WithMany()
-                        .HasForeignKey("DobavljacID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Dobavljac");
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Teretana", b =>

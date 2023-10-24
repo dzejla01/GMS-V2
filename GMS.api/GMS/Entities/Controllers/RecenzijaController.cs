@@ -2,31 +2,30 @@
 using GMS.Entities.Models;
 using GMS.Entities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace GMS.Entities.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class SuplementController : Controller
+    public class RecenzijaController : ControllerBase
     {
         private readonly ApplicationDbContext db;
-        public SuplementController(ApplicationDbContext dbContext)
+        public RecenzijaController(ApplicationDbContext dbContext)
         {
             db = dbContext;
         }
 
         [HttpPost]
 
-        public Suplement Add([FromBody] SuplementAddVM x)
+        public Recenzija Add([FromBody] RecenzijaAddVM x)
         {
-            var noviZapis = new Suplement
+            var noviZapis = new Recenzija
             {
-                Naziv = x.Naziv,
-                Cijena = x.Cijena,
-                DobavljacID = x.DobavljacID
-               
-
+                Ime = x.Ime,
+                Prezime = x.Prezime,
+                Zanimanje = x.Zanimanje,
+                Tekst = x.Tekst
+                
             };
 
             db.Add(noviZapis);
@@ -38,18 +37,18 @@ namespace GMS.Entities.Controllers
 
         public object GetAll()
         {
-            var sviZapisi = db.Suplement.Include("Dobavljac")
+            var sviZapisi = db.Recenzija
                 .Select(x => new
                 {
-                    ID = x.ID,
-                    Naziv = x.Naziv,
-                    Cijena = x.Cijena,
-                    Dobavljac = x.Dobavljac
+                    ID = x.Id,
+                    Ime = x.Ime,
+                    Prezime = x.Prezime,
+                    Zanimanje = x.Zanimanje,
+                    Tekst = x.Tekst
                 }
                 ).ToList();
-
             return sviZapisi;
         }
 
+        }
     }
-}

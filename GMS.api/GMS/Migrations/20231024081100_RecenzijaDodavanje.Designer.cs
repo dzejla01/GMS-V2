@@ -4,6 +4,7 @@ using GMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231024081100_RecenzijaDodavanje")]
+    partial class RecenzijaDodavanje
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,23 +109,6 @@ namespace GMS.Migrations
                             Cijena = 25f,
                             Naziv = "Penzioneri"
                         });
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Dobavljac", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<string>("Naziv")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Dobavljac");
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.FAQ", b =>
@@ -654,16 +639,11 @@ namespace GMS.Migrations
                     b.Property<float>("Cijena")
                         .HasColumnType("real");
 
-                    b.Property<int>("DobavljacID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Naziv")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("DobavljacID");
 
                     b.ToTable("Suplement");
                 });
@@ -905,17 +885,6 @@ namespace GMS.Migrations
                     b.Navigation("Nutricionist");
 
                     b.Navigation("Seminar");
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Suplement", b =>
-                {
-                    b.HasOne("GMS.Entities.Models.Dobavljac", "Dobavljac")
-                        .WithMany()
-                        .HasForeignKey("DobavljacID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Dobavljac");
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Teretana", b =>

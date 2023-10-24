@@ -4,6 +4,7 @@ using GMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231024060558_newd")]
+    partial class newd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,20 +43,6 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Administrator");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Password = "admin",
-                            Username = "admin"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Password = "host",
-                            Username = "host"
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Clanarina", b =>
@@ -75,55 +63,6 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Clanarina");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Cijena = 50f,
-                            Naziv = "Basic"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Cijena = 40f,
-                            Naziv = "Studentska"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Cijena = 30f,
-                            Naziv = "Parovi"
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Cijena = 25f,
-                            Naziv = "Djeca"
-                        },
-                        new
-                        {
-                            ID = 5,
-                            Cijena = 25f,
-                            Naziv = "Penzioneri"
-                        });
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Dobavljac", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<string>("Naziv")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Dobavljac");
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.FAQ", b =>
@@ -162,168 +101,6 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Grad");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Naziv = "Banja Luka"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Naziv = "Bihać"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Naziv = "Bijeljina"
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Naziv = "Bosnaska Krupa"
-                        },
-                        new
-                        {
-                            ID = 5,
-                            Naziv = "Cazin"
-                        },
-                        new
-                        {
-                            ID = 6,
-                            Naziv = "Čapljina"
-                        },
-                        new
-                        {
-                            ID = 7,
-                            Naziv = "Drventa"
-                        },
-                        new
-                        {
-                            ID = 8,
-                            Naziv = "Doboj"
-                        },
-                        new
-                        {
-                            ID = 9,
-                            Naziv = "Goražde"
-                        },
-                        new
-                        {
-                            ID = 10,
-                            Naziv = "Gračanica"
-                        },
-                        new
-                        {
-                            ID = 11,
-                            Naziv = "Gradačac"
-                        },
-                        new
-                        {
-                            ID = 12,
-                            Naziv = "Gradiška"
-                        },
-                        new
-                        {
-                            ID = 13,
-                            Naziv = "Konjic"
-                        },
-                        new
-                        {
-                            ID = 14,
-                            Naziv = "Laktaši"
-                        },
-                        new
-                        {
-                            ID = 15,
-                            Naziv = "Livno"
-                        },
-                        new
-                        {
-                            ID = 16,
-                            Naziv = "Lukavac"
-                        },
-                        new
-                        {
-                            ID = 17,
-                            Naziv = "Ljubuški"
-                        },
-                        new
-                        {
-                            ID = 18,
-                            Naziv = "Mostar"
-                        },
-                        new
-                        {
-                            ID = 19,
-                            Naziv = "Orašje"
-                        },
-                        new
-                        {
-                            ID = 20,
-                            Naziv = "Prijedor"
-                        },
-                        new
-                        {
-                            ID = 21,
-                            Naziv = "Prnjavor"
-                        },
-                        new
-                        {
-                            ID = 22,
-                            Naziv = "Sarajevo"
-                        },
-                        new
-                        {
-                            ID = 23,
-                            Naziv = "Srebrenik"
-                        },
-                        new
-                        {
-                            ID = 24,
-                            Naziv = "Stolac"
-                        },
-                        new
-                        {
-                            ID = 25,
-                            Naziv = "Široki Brijeg"
-                        },
-                        new
-                        {
-                            ID = 26,
-                            Naziv = "Travnik"
-                        },
-                        new
-                        {
-                            ID = 27,
-                            Naziv = "Tuzla"
-                        },
-                        new
-                        {
-                            ID = 28,
-                            Naziv = "Visoko"
-                        },
-                        new
-                        {
-                            ID = 29,
-                            Naziv = "Zavidovići"
-                        },
-                        new
-                        {
-                            ID = 30,
-                            Naziv = "Zenica"
-                        },
-                        new
-                        {
-                            ID = 31,
-                            Naziv = "Zvornik"
-                        },
-                        new
-                        {
-                            ID = 32,
-                            Naziv = "Živinice"
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Korisnik", b =>
@@ -378,36 +155,6 @@ namespace GMS.Migrations
                     b.HasIndex("TeretanaID");
 
                     b.ToTable("Korisnik");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            BrojTelefona = "0644076290",
-                            GradID = 18,
-                            Ime = "Vedad",
-                            Password = "bayern123",
-                            Prezime = "Keskin",
-                            SpolID = 1,
-                            TeretanaID = 2,
-                            Tezina = 80f,
-                            Username = "vedadke",
-                            Visina = 170f
-                        },
-                        new
-                        {
-                            ID = 2,
-                            BrojTelefona = "062709689",
-                            GradID = 26,
-                            Ime = "Džejla",
-                            Password = "fit2023",
-                            Prezime = "Palalić",
-                            SpolID = 2,
-                            TeretanaID = 2,
-                            Tezina = 57f,
-                            Username = "dzejlap",
-                            Visina = 164f
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Korisnik_Clanarina", b =>
@@ -429,36 +176,6 @@ namespace GMS.Migrations
                     b.HasIndex("KorisnikID");
 
                     b.ToTable("Korisnik_Clanarina");
-
-                    b.HasData(
-                        new
-                        {
-                            ClanarinaID = 2,
-                            KorisnikID = 1,
-                            DatumUplate = new DateTime(2023, 9, 1, 9, 15, 0, 0, DateTimeKind.Unspecified),
-                            DatumIsteka = new DateTime(2023, 10, 1, 9, 15, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            ClanarinaID = 2,
-                            KorisnikID = 2,
-                            DatumUplate = new DateTime(2023, 9, 1, 9, 15, 0, 0, DateTimeKind.Unspecified),
-                            DatumIsteka = new DateTime(2023, 10, 1, 9, 15, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            ClanarinaID = 2,
-                            KorisnikID = 1,
-                            DatumUplate = new DateTime(2023, 10, 1, 7, 15, 0, 0, DateTimeKind.Unspecified),
-                            DatumIsteka = new DateTime(2023, 11, 1, 7, 15, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            ClanarinaID = 2,
-                            KorisnikID = 2,
-                            DatumUplate = new DateTime(2023, 10, 1, 7, 15, 0, 0, DateTimeKind.Unspecified),
-                            DatumIsteka = new DateTime(2023, 11, 1, 7, 15, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Korisnik_Nutricionist", b =>
@@ -561,35 +278,6 @@ namespace GMS.Migrations
                     b.ToTable("Nutricionist_Seminar");
                 });
 
-            modelBuilder.Entity("GMS.Entities.Models.Recenzija", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Ime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Prezime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tekst")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Zanimanje")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Recenzija");
-                });
-
             modelBuilder.Entity("GMS.Entities.Models.Seminar", b =>
                 {
                     b.Property<int>("ID")
@@ -629,18 +317,6 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Spol");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Naziv = "Muški"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Naziv = "Ženski"
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Suplement", b =>
@@ -654,16 +330,11 @@ namespace GMS.Migrations
                     b.Property<float>("Cijena")
                         .HasColumnType("real");
 
-                    b.Property<int>("DobavljacID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Naziv")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("DobavljacID");
 
                     b.ToTable("Suplement");
                 });
@@ -692,57 +363,6 @@ namespace GMS.Migrations
                     b.HasIndex("GradID");
 
                     b.ToTable("Teretana");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Adresa = "Patriotske lige bb",
-                            GradID = 22,
-                            Naziv = "ProGym Fitness Centar"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Adresa = "Novo naselje Zalik bb",
-                            GradID = 18,
-                            Naziv = "Bodyline Mostar"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Adresa = "Turalibegova 25a",
-                            GradID = 27,
-                            Naziv = "Body Control"
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Adresa = "Veljka Mlađenovića bb",
-                            GradID = 1,
-                            Naziv = "Blue Line Fitness"
-                        },
-                        new
-                        {
-                            ID = 5,
-                            Adresa = "Trg Alije Izetbegovića 86",
-                            GradID = 30,
-                            Naziv = "ZEFIT Gym"
-                        },
-                        new
-                        {
-                            ID = 6,
-                            Adresa = "Sarajevska k-1",
-                            GradID = 2,
-                            Naziv = "Reflex Gym"
-                        },
-                        new
-                        {
-                            ID = 7,
-                            Adresa = "Željeznička 2, Konjic",
-                            GradID = 13,
-                            Naziv = "No Limits Gym"
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Trener", b =>
@@ -905,17 +525,6 @@ namespace GMS.Migrations
                     b.Navigation("Nutricionist");
 
                     b.Navigation("Seminar");
-                });
-
-            modelBuilder.Entity("GMS.Entities.Models.Suplement", b =>
-                {
-                    b.HasOne("GMS.Entities.Models.Dobavljac", "Dobavljac")
-                        .WithMany()
-                        .HasForeignKey("DobavljacID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Dobavljac");
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Teretana", b =>

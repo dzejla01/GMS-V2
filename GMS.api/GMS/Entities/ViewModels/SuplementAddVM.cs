@@ -4,6 +4,8 @@
     {
         public string Naziv { get; set; }
         public float Cijena { get; set; }
+
+        public int DobavljacID { get; set; }
         // public IFormFile Slika { get; set; }
     }
 }
