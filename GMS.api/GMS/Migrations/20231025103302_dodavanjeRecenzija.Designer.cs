@@ -4,6 +4,7 @@ using GMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231025103302_dodavanjeRecenzija")]
+    partial class dodavanjeRecenzija
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -630,22 +632,6 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Nutricionist");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            BrojTelefona = "062709689",
-                            Ime = "Marijana",
-                            Prezime = "Zubac"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            BrojTelefona = "062709689",
-                            Ime = "Amela",
-                            Prezime = "Ivković"
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Nutricionist_Seminar", b =>
@@ -661,28 +647,6 @@ namespace GMS.Migrations
                     b.HasIndex("SeminarID");
 
                     b.ToTable("Nutricionist_Seminar");
-
-                    b.HasData(
-                        new
-                        {
-                            NutricionistID = 1,
-                            SeminarID = 1
-                        },
-                        new
-                        {
-                            NutricionistID = 1,
-                            SeminarID = 2
-                        },
-                        new
-                        {
-                            NutricionistID = 2,
-                            SeminarID = 2
-                        },
-                        new
-                        {
-                            NutricionistID = 2,
-                            SeminarID = 3
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Recenzija", b =>
@@ -770,50 +734,6 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Seminar");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Datum = new DateTime(2022, 12, 10, 9, 15, 0, 0, DateTimeKind.Unspecified),
-                            Predavac = "Maja Gradinjan",
-                            Tema = "Metabolički Sindrom"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Datum = new DateTime(2023, 4, 12, 9, 15, 0, 0, DateTimeKind.Unspecified),
-                            Predavac = "Darija Topić",
-                            Tema = "Pravilna prehrana u službi zdravlja i sportskog razvoja"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Datum = new DateTime(2020, 1, 10, 9, 15, 0, 0, DateTimeKind.Unspecified),
-                            Predavac = "Tatjana Popović",
-                            Tema = "Snaga u vama"
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Datum = new DateTime(2019, 12, 10, 9, 15, 0, 0, DateTimeKind.Unspecified),
-                            Predavac = "Ivan Račić",
-                            Tema = "CrossFit Level 3"
-                        },
-                        new
-                        {
-                            ID = 5,
-                            Datum = new DateTime(2017, 6, 10, 9, 15, 0, 0, DateTimeKind.Unspecified),
-                            Predavac = "Petar Klančir",
-                            Tema = "Pro Bodybuilding"
-                        },
-                        new
-                        {
-                            ID = 6,
-                            Datum = new DateTime(2022, 1, 1, 12, 15, 0, 0, DateTimeKind.Unspecified),
-                            Predavac = "Almir Tunić",
-                            Tema = "Samoodbrana"
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Spol", b =>
@@ -1224,22 +1144,6 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Trener");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            BrojTelefona = "0644076290",
-                            Ime = "Kadir",
-                            Prezime = "Keskin"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            BrojTelefona = "0644076290",
-                            Ime = "Azur",
-                            Prezime = "Kahriman"
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Trener_Seminar", b =>
@@ -1255,28 +1159,6 @@ namespace GMS.Migrations
                     b.HasIndex("SeminarID");
 
                     b.ToTable("Trener_Seminar");
-
-                    b.HasData(
-                        new
-                        {
-                            TrenerID = 1,
-                            SeminarID = 5
-                        },
-                        new
-                        {
-                            TrenerID = 1,
-                            SeminarID = 6
-                        },
-                        new
-                        {
-                            TrenerID = 2,
-                            SeminarID = 4
-                        },
-                        new
-                        {
-                            TrenerID = 2,
-                            SeminarID = 6
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Korisnik", b =>

@@ -40,7 +40,7 @@ namespace GMS.Entities.Controllers
             var sviZapisi = db.Recenzija
                 .Select(x => new
                 {
-                    ID = x.Id,
+                    ID = x.ID,
                     Ime = x.Ime,
                     Prezime = x.Prezime,
                     Zanimanje = x.Zanimanje,

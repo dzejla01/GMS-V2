@@ -4,6 +4,7 @@ using GMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231025111846_treneriSeminari")]
+    partial class treneriSeminari
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -661,28 +663,6 @@ namespace GMS.Migrations
                     b.HasIndex("SeminarID");
 
                     b.ToTable("Nutricionist_Seminar");
-
-                    b.HasData(
-                        new
-                        {
-                            NutricionistID = 1,
-                            SeminarID = 1
-                        },
-                        new
-                        {
-                            NutricionistID = 1,
-                            SeminarID = 2
-                        },
-                        new
-                        {
-                            NutricionistID = 2,
-                            SeminarID = 2
-                        },
-                        new
-                        {
-                            NutricionistID = 2,
-                            SeminarID = 3
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Recenzija", b =>
@@ -1255,28 +1235,6 @@ namespace GMS.Migrations
                     b.HasIndex("SeminarID");
 
                     b.ToTable("Trener_Seminar");
-
-                    b.HasData(
-                        new
-                        {
-                            TrenerID = 1,
-                            SeminarID = 5
-                        },
-                        new
-                        {
-                            TrenerID = 1,
-                            SeminarID = 6
-                        },
-                        new
-                        {
-                            TrenerID = 2,
-                            SeminarID = 4
-                        },
-                        new
-                        {
-                            TrenerID = 2,
-                            SeminarID = 6
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Korisnik", b =>

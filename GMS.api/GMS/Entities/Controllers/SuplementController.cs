@@ -57,6 +57,46 @@ namespace GMS.Entities.Controllers
 
             return sviZapisi;
         }
+        [HttpGet]
+
+        public object PretragaPoDobavljacu(int DobavljacID)
+        {
+            var sviZapisi = db.Suplement.Include("Dobavljac").Include("Kategorija")
+                .Where(x=> x.DobavljacID == DobavljacID)
+                .Select(x => new
+                {
+                    ID = x.ID,
+                    Naziv = x.Naziv,
+                    Cijena = x.Cijena,
+                    Gramaza = x.Gramaza,
+                    Opis = x.Opis,
+                    Dobavljac = x.Dobavljac,
+                    Kategorija = x.Kategorija
+                }
+                ).ToList();
+
+            return sviZapisi;
+        }
+        [HttpGet]
+
+        public object PretragaPoKategoriji(int KategorijaID)
+        {
+            var sviZapisi = db.Suplement.Include("Dobavljac").Include("Kategorija")
+                .Where(x=> x.KategorijaID == KategorijaID)
+                .Select(x => new
+                {
+                    ID = x.ID,
+                    Naziv = x.Naziv,
+                    Cijena = x.Cijena,
+                    Gramaza = x.Gramaza,
+                    Opis = x.Opis,
+                    Dobavljac = x.Dobavljac,
+                    Kategorija = x.Kategorija
+                }
+                ).ToList();
+
+            return sviZapisi;
+        }
 
     }
 }

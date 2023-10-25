@@ -4,6 +4,7 @@ using GMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231025094140_dodavanjeSuplemenata")]
+    partial class dodavanjeSuplemenata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -630,22 +632,6 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Nutricionist");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            BrojTelefona = "062709689",
-                            Ime = "Marijana",
-                            Prezime = "Zubac"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            BrojTelefona = "062709689",
-                            Ime = "Amela",
-                            Prezime = "Ivković"
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Nutricionist_Seminar", b =>
@@ -661,37 +647,15 @@ namespace GMS.Migrations
                     b.HasIndex("SeminarID");
 
                     b.ToTable("Nutricionist_Seminar");
-
-                    b.HasData(
-                        new
-                        {
-                            NutricionistID = 1,
-                            SeminarID = 1
-                        },
-                        new
-                        {
-                            NutricionistID = 1,
-                            SeminarID = 2
-                        },
-                        new
-                        {
-                            NutricionistID = 2,
-                            SeminarID = 2
-                        },
-                        new
-                        {
-                            NutricionistID = 2,
-                            SeminarID = 3
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Recenzija", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Ime")
                         .IsRequired()
@@ -709,43 +673,9 @@ namespace GMS.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Recenzija");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Ime = "Edin",
-                            Prezime = "Džeko",
-                            Tekst = "Toplo preporučujem svima koji traže vrhunsku dvoranu za fitness. Osoblje je ljubazno i obrazovano, oprema je u izvrsnom stanju, a atmosfera jako motivirajuća. To je mjesto gdje možete postići svoje fitness ciljeve i pritom se osjećati sjajno. Pridruživanje ovoj teretani bila je jedna od najboljih odluka koje sam donio za svoje zdravlje i dobrobit.",
-                            Zanimanje = "Fudbaler"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Ime = "Jusuf",
-                            Prezime = "Nurkić",
-                            Tekst = "Ako ste u potrazi za izvrsnom teretanom, ne tražite dalje. Član sam već dvije godine i bilo je to nevjerojatno putovanje u svijet fitnesa. Treneri su izvrsni, raznolikost opreme je impresivna, a sveukupno okruženje tako gostoljubivo. Vidio sam stvarne rezultate i osjećam se energičnije i sigurnije. Pridruživanje ovoj teretani bio je fantastičan izbor i ne mogu ga dovoljno preporučiti!",
-                            Zanimanje = "Košarkaš"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Ime = "Lana",
-                            Prezime = "Pudar",
-                            Tekst = "Svim srcem podržavam rad ovog postrojenja kao ultimativno odredište za trening. Od najsavremenije opreme do ljubaznog osoblja koje vam pruža podršku, ova teretana ima sve što vam je potrebno za postizanje vaših fitness ciljeva. Pozitivna i motivirajuća atmosfera tjera me da se vraćam i značajno sam napredovala u svom zdravlju i kondiciji otkako sam se pridružila. Nemojte se ustručavati postati dio ove fantastične zajednice – nećete požaliti!",
-                            Zanimanje = "Plivačica"
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Ime = "Amel",
-                            Prezime = "Tuka",
-                            Tekst = "Za uistinu izvanredno fitness iskustvo, ne mogu dovoljno preporučiti ovo mjesto. Ova teretana ima sve: dobro održavane sprave, stručne trenere i fantastičnu atmosferu. Vidio sam izvanredna poboljšanja u svojoj snazi i općem zdravlju otkako sam postao član. Ako tražite teretanu koja nadahnjuje i podržava vaše putovanje u fitness, onda je ovo pravo mjesto za vas. Pridruživanje je bila jedna od najboljih odluka koje sam donio za svoje zdravlje.",
-                            Zanimanje = "Atletičar"
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Seminar", b =>
@@ -770,50 +700,6 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Seminar");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            Datum = new DateTime(2022, 12, 10, 9, 15, 0, 0, DateTimeKind.Unspecified),
-                            Predavac = "Maja Gradinjan",
-                            Tema = "Metabolički Sindrom"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Datum = new DateTime(2023, 4, 12, 9, 15, 0, 0, DateTimeKind.Unspecified),
-                            Predavac = "Darija Topić",
-                            Tema = "Pravilna prehrana u službi zdravlja i sportskog razvoja"
-                        },
-                        new
-                        {
-                            ID = 3,
-                            Datum = new DateTime(2020, 1, 10, 9, 15, 0, 0, DateTimeKind.Unspecified),
-                            Predavac = "Tatjana Popović",
-                            Tema = "Snaga u vama"
-                        },
-                        new
-                        {
-                            ID = 4,
-                            Datum = new DateTime(2019, 12, 10, 9, 15, 0, 0, DateTimeKind.Unspecified),
-                            Predavac = "Ivan Račić",
-                            Tema = "CrossFit Level 3"
-                        },
-                        new
-                        {
-                            ID = 5,
-                            Datum = new DateTime(2017, 6, 10, 9, 15, 0, 0, DateTimeKind.Unspecified),
-                            Predavac = "Petar Klančir",
-                            Tema = "Pro Bodybuilding"
-                        },
-                        new
-                        {
-                            ID = 6,
-                            Datum = new DateTime(2022, 1, 1, 12, 15, 0, 0, DateTimeKind.Unspecified),
-                            Predavac = "Almir Tunić",
-                            Tema = "Samoodbrana"
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Spol", b =>
@@ -1224,22 +1110,6 @@ namespace GMS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Trener");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            BrojTelefona = "0644076290",
-                            Ime = "Kadir",
-                            Prezime = "Keskin"
-                        },
-                        new
-                        {
-                            ID = 2,
-                            BrojTelefona = "0644076290",
-                            Ime = "Azur",
-                            Prezime = "Kahriman"
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Trener_Seminar", b =>
@@ -1255,28 +1125,6 @@ namespace GMS.Migrations
                     b.HasIndex("SeminarID");
 
                     b.ToTable("Trener_Seminar");
-
-                    b.HasData(
-                        new
-                        {
-                            TrenerID = 1,
-                            SeminarID = 5
-                        },
-                        new
-                        {
-                            TrenerID = 1,
-                            SeminarID = 6
-                        },
-                        new
-                        {
-                            TrenerID = 2,
-                            SeminarID = 4
-                        },
-                        new
-                        {
-                            TrenerID = 2,
-                            SeminarID = 6
-                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Korisnik", b =>
