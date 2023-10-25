@@ -24,7 +24,11 @@ namespace GMS.Entities.Controllers
             {
                 Naziv = x.Naziv,
                 Cijena = x.Cijena,
-                DobavljacID = x.DobavljacID
+                Gramaza = x.Gramaza,
+                Opis = x.Opis,
+                //Slika = x.Slika,
+                DobavljacID = x.DobavljacID,
+                KategorijaID = x.KategorijaID
                
 
             };
@@ -38,13 +42,16 @@ namespace GMS.Entities.Controllers
 
         public object GetAll()
         {
-            var sviZapisi = db.Suplement.Include("Dobavljac")
+            var sviZapisi = db.Suplement.Include("Dobavljac").Include("Kategorija")
                 .Select(x => new
                 {
                     ID = x.ID,
                     Naziv = x.Naziv,
                     Cijena = x.Cijena,
-                    Dobavljac = x.Dobavljac
+                    Gramaza = x.Gramaza,
+                    Opis = x.Opis,
+                    Dobavljac = x.Dobavljac,
+                    Kategorija = x.Kategorija
                 }
                 ).ToList();
 

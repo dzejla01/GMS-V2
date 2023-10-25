@@ -38,6 +38,19 @@ namespace GMS.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Dobavljac",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Naziv = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Dobavljac", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FAQ",
                 columns: table => new
                 {
@@ -65,6 +78,19 @@ namespace GMS.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Kategorija",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Naziv = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Kategorija", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Nutricionist",
                 columns: table => new
                 {
@@ -77,6 +103,22 @@ namespace GMS.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Nutricionist", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Recenzija",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Ime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Prezime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Zanimanje = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Tekst = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Recenzija", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -105,20 +147,6 @@ namespace GMS.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Spol", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Suplement",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Naziv = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Cijena = table.Column<float>(type: "real", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Suplement", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -153,6 +181,36 @@ namespace GMS.Migrations
                         name: "FK_Teretana_Grad_GradID",
                         column: x => x.GradID,
                         principalTable: "Grad",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Suplement",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Naziv = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Cijena = table.Column<float>(type: "real", nullable: false),
+                    Gramaza = table.Column<float>(type: "real", nullable: false),
+                    Opis = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DobavljacID = table.Column<int>(type: "int", nullable: false),
+                    KategorijaID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Suplement", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Suplement_Dobavljac_DobavljacID",
+                        column: x => x.DobavljacID,
+                        principalTable: "Dobavljac",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_Suplement_Kategorija_KategorijaID",
+                        column: x => x.KategorijaID,
+                        principalTable: "Kategorija",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.NoAction);
                 });
@@ -362,8 +420,8 @@ namespace GMS.Migrations
                 columns: new[] { "ID", "Cijena", "Naziv" },
                 values: new object[,]
                 {
-                    { 1, 50f, "Obična" },
-                    { 2, 40f, "Studenti" },
+                    { 1, 50f, "Basic" },
+                    { 2, 40f, "Studentska" },
                     { 3, 30f, "Parovi" },
                     { 4, 25f, "Djeca" },
                     { 5, 25f, "Penzioneri" }
@@ -399,7 +457,7 @@ namespace GMS.Migrations
                     { 23, "Srebrenik" },
                     { 24, "Stolac" },
                     { 25, "Široki Brijeg" },
-                    { 26, "Trebinje" },
+                    { 26, "Travnik" },
                     { 27, "Tuzla" },
                     { 28, "Visoko" },
                     { 29, "Zavidovići" },
@@ -429,6 +487,27 @@ namespace GMS.Migrations
                     { 5, "Trg Alije Izetbegovića 86", 30, "ZEFIT Gym" },
                     { 6, "Sarajevska k-1", 2, "Reflex Gym" },
                     { 7, "Željeznička 2, Konjic", 13, "No Limits Gym" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Korisnik",
+                columns: new[] { "ID", "BrojTelefona", "GradID", "Ime", "Password", "Prezime", "SpolID", "TeretanaID", "Tezina", "Username", "Visina" },
+                values: new object[] { 1, "0644076290", 18, "Vedad", "bayern123", "Keskin", 1, 2, 80f, "vedadke", 170f });
+
+            migrationBuilder.InsertData(
+                table: "Korisnik",
+                columns: new[] { "ID", "BrojTelefona", "GradID", "Ime", "Password", "Prezime", "SpolID", "TeretanaID", "Tezina", "Username", "Visina" },
+                values: new object[] { 2, "062709689", 26, "Džejla", "fit2023", "Palalić", 2, 2, 57f, "dzejlap", 164f });
+
+            migrationBuilder.InsertData(
+                table: "Korisnik_Clanarina",
+                columns: new[] { "ClanarinaID", "DatumUplate", "KorisnikID", "DatumIsteka" },
+                values: new object[,]
+                {
+                    { 2, new DateTime(2023, 9, 1, 9, 15, 0, 0, DateTimeKind.Unspecified), 1, new DateTime(2023, 10, 1, 9, 15, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, new DateTime(2023, 10, 1, 7, 15, 0, 0, DateTimeKind.Unspecified), 1, new DateTime(2023, 11, 1, 7, 15, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, new DateTime(2023, 9, 1, 9, 15, 0, 0, DateTimeKind.Unspecified), 2, new DateTime(2023, 10, 1, 9, 15, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, new DateTime(2023, 10, 1, 7, 15, 0, 0, DateTimeKind.Unspecified), 2, new DateTime(2023, 11, 1, 7, 15, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.CreateIndex(
@@ -472,6 +551,16 @@ namespace GMS.Migrations
                 column: "SeminarID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Suplement_DobavljacID",
+                table: "Suplement",
+                column: "DobavljacID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Suplement_KategorijaID",
+                table: "Suplement",
+                column: "KategorijaID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Teretana_GradID",
                 table: "Teretana",
                 column: "GradID");
@@ -506,6 +595,9 @@ namespace GMS.Migrations
                 name: "Nutricionist_Seminar");
 
             migrationBuilder.DropTable(
+                name: "Recenzija");
+
+            migrationBuilder.DropTable(
                 name: "Trener_Seminar");
 
             migrationBuilder.DropTable(
@@ -525,6 +617,12 @@ namespace GMS.Migrations
 
             migrationBuilder.DropTable(
                 name: "Trener");
+
+            migrationBuilder.DropTable(
+                name: "Dobavljac");
+
+            migrationBuilder.DropTable(
+                name: "Kategorija");
 
             migrationBuilder.DropTable(
                 name: "Spol");

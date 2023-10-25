@@ -33,6 +33,8 @@ namespace GMS.Data
             modelBuilder.ApplyConfiguration(new TeretanaConfiguration());
             modelBuilder.ApplyConfiguration(new KorisnikConfiguration());
             modelBuilder.ApplyConfiguration(new Korisnik_ClanarinaConfiguration());
+            modelBuilder.ApplyConfiguration(new DobavljacConfiguration());
+            modelBuilder.ApplyConfiguration(new KateogorijaConfiguration());
         }
         public DbSet<Grad> Grad { get; set; }
         public DbSet<Spol> Spol { get; set; }
@@ -53,6 +55,7 @@ namespace GMS.Data
         public DbSet<Korisnik_Suplement> Korisnik_Suplement { get; set; }
         public DbSet<Recenzija> Recenzija { get; set; }
         public DbSet<Dobavljac> Dobavljac { get; set; }
+        public DbSet<Kategorija> Kategorija { get; set; }
 
 
         public ApplicationDbContext(

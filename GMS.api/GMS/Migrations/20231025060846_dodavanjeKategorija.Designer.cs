@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GMS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231024060226_newDB")]
-    partial class newDB
+    [Migration("20231025060846_dodavanjeKategorija")]
+    partial class dodavanjeKategorija
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,13 +83,13 @@ namespace GMS.Migrations
                         {
                             ID = 1,
                             Cijena = 50f,
-                            Naziv = "Obična"
+                            Naziv = "Basic"
                         },
                         new
                         {
                             ID = 2,
                             Cijena = 40f,
-                            Naziv = "Studenti"
+                            Naziv = "Studentska"
                         },
                         new
                         {
@@ -108,6 +108,70 @@ namespace GMS.Migrations
                             ID = 5,
                             Cijena = 25f,
                             Naziv = "Penzioneri"
+                        });
+                });
+
+            modelBuilder.Entity("GMS.Entities.Models.Dobavljac", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("Naziv")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Dobavljac");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Naziv = "MUSCLE FREAK"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Naziv = "MUSCLETECH"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Naziv = "OPTIMUM NUTRITION"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Naziv = "SELF OMNINUTRITION"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Naziv = "CW-CHEMICAL WARFARE"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            Naziv = "BSN"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            Naziv = "CELLUCOR"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            Naziv = "EVOLITE"
+                        },
+                        new
+                        {
+                            ID = 9,
+                            Naziv = "SUPERIOR"
                         });
                 });
 
@@ -277,7 +341,7 @@ namespace GMS.Migrations
                         new
                         {
                             ID = 26,
-                            Naziv = "Trebinje"
+                            Naziv = "Travnik"
                         },
                         new
                         {
@@ -308,6 +372,45 @@ namespace GMS.Migrations
                         {
                             ID = 32,
                             Naziv = "Živinice"
+                        });
+                });
+
+            modelBuilder.Entity("GMS.Entities.Models.Kategorija", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("Naziv")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Kategorija");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Naziv = "Proteini"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Naziv = "Amino kiseline"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Naziv = "Preworkout"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Naziv = "Mass gaineri"
                         });
                 });
 
@@ -363,6 +466,36 @@ namespace GMS.Migrations
                     b.HasIndex("TeretanaID");
 
                     b.ToTable("Korisnik");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            BrojTelefona = "0644076290",
+                            GradID = 18,
+                            Ime = "Vedad",
+                            Password = "bayern123",
+                            Prezime = "Keskin",
+                            SpolID = 1,
+                            TeretanaID = 2,
+                            Tezina = 80f,
+                            Username = "vedadke",
+                            Visina = 170f
+                        },
+                        new
+                        {
+                            ID = 2,
+                            BrojTelefona = "062709689",
+                            GradID = 26,
+                            Ime = "Džejla",
+                            Password = "fit2023",
+                            Prezime = "Palalić",
+                            SpolID = 2,
+                            TeretanaID = 2,
+                            Tezina = 57f,
+                            Username = "dzejlap",
+                            Visina = 164f
+                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Korisnik_Clanarina", b =>
@@ -384,6 +517,36 @@ namespace GMS.Migrations
                     b.HasIndex("KorisnikID");
 
                     b.ToTable("Korisnik_Clanarina");
+
+                    b.HasData(
+                        new
+                        {
+                            ClanarinaID = 2,
+                            KorisnikID = 1,
+                            DatumUplate = new DateTime(2023, 9, 1, 9, 15, 0, 0, DateTimeKind.Unspecified),
+                            DatumIsteka = new DateTime(2023, 10, 1, 9, 15, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            ClanarinaID = 2,
+                            KorisnikID = 2,
+                            DatumUplate = new DateTime(2023, 9, 1, 9, 15, 0, 0, DateTimeKind.Unspecified),
+                            DatumIsteka = new DateTime(2023, 10, 1, 9, 15, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            ClanarinaID = 2,
+                            KorisnikID = 1,
+                            DatumUplate = new DateTime(2023, 10, 1, 7, 15, 0, 0, DateTimeKind.Unspecified),
+                            DatumIsteka = new DateTime(2023, 11, 1, 7, 15, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            ClanarinaID = 2,
+                            KorisnikID = 2,
+                            DatumUplate = new DateTime(2023, 10, 1, 7, 15, 0, 0, DateTimeKind.Unspecified),
+                            DatumIsteka = new DateTime(2023, 11, 1, 7, 15, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Korisnik_Nutricionist", b =>
@@ -486,6 +649,35 @@ namespace GMS.Migrations
                     b.ToTable("Nutricionist_Seminar");
                 });
 
+            modelBuilder.Entity("GMS.Entities.Models.Recenzija", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Ime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prezime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tekst")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Zanimanje")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Recenzija");
+                });
+
             modelBuilder.Entity("GMS.Entities.Models.Seminar", b =>
                 {
                     b.Property<int>("ID")
@@ -550,11 +742,28 @@ namespace GMS.Migrations
                     b.Property<float>("Cijena")
                         .HasColumnType("real");
 
+                    b.Property<int>("DobavljacID")
+                        .HasColumnType("int");
+
+                    b.Property<float>("Gramaza")
+                        .HasColumnType("real");
+
+                    b.Property<int>("KategorijaID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Naziv")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Opis")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("DobavljacID");
+
+                    b.HasIndex("KategorijaID");
 
                     b.ToTable("Suplement");
                 });
@@ -796,6 +1005,25 @@ namespace GMS.Migrations
                     b.Navigation("Nutricionist");
 
                     b.Navigation("Seminar");
+                });
+
+            modelBuilder.Entity("GMS.Entities.Models.Suplement", b =>
+                {
+                    b.HasOne("GMS.Entities.Models.Dobavljac", "Dobavljac")
+                        .WithMany()
+                        .HasForeignKey("DobavljacID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GMS.Entities.Models.Kategorija", "Kategorija")
+                        .WithMany()
+                        .HasForeignKey("KategorijaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dobavljac");
+
+                    b.Navigation("Kategorija");
                 });
 
             modelBuilder.Entity("GMS.Entities.Models.Teretana", b =>
