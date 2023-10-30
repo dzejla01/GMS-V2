@@ -23,7 +23,7 @@ namespace GMS.Entities.Controllers
             var novaKorisnikClanarina = new Korisnik_Clanarina
             {
                 KorisnikID= x.KorisnikID,
-                ClanarinaID=x.ClanarinaID,
+                ClanarinaID = x.ClanarinaID,
                 DatumUplate = x.DatumUplate,
                 DatumIsteka = x.DatumIsteka
             };
