@@ -1,0 +1,24 @@
+<h2>Hello world</h2>
+{{ime}}
+{{brojac}}
+
+<input value="{{ime}}" (change)="IzmjenaTeksta($event)">
+<input value="{{ime}}" (input)="IzmjenaTeksta($event)">
+<br>
+<input [(ngModel)]="ime">
+<button (click)="TestirajDugme()">Dugme 1 alert</button>
+<button (click)="Uvecaj()">Dugme 2 ++</button>
+
+<div *ngIf="isVidljiv()" [ngStyle]="StyleZaDiv()"> Vedad</div>
+
+
+// for
+<div style="border: 1px solid black" *ngFor="let x of Imena">
+  {{x}}
+</div>
+<br>
+<input [(ngModel)]="NovoIme"><br>
+<button (click)="DodajNovoIme()">Dodaj novo ime</button>
+
+<img src="assets/dzeko.jpg" alt="">
+
