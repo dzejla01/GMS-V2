@@ -4,6 +4,7 @@
   naziv: string
   cijena: number
   gramaza: number
+  slika: string
   opis: string
   dobavljac: Dobavljac
   kategorija: Kategorija

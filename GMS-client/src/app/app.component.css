@@ -3,3 +3,12 @@ h3{
   display: inline;
   margin-right: 20px;
 }
+
+
+:host{
+padding: 5px;
+}
+
+.glavni-div{
+  padding: 10px;
+}

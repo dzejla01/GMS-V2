@@ -1,6 +1,35 @@
 <p>page3 works!</p>
-<button (click)="GetSupplements()">GetSupplements</button>
+<button (click)="GetSupplements()">Generiši suplemente</button>
 
+<!--
 <ol>
   <li *ngFor="let x of suplementi">. {{x.dobavljac.naziv}} {{x.naziv}} {{x.cijena}} </li>
 </ol>
+-->
+<br>
+<h3>Unesite naziv</h3>
+<input [(ngModel)]="PretragaNaziv">
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Naziv</th>
+    <th>Cijena</th>
+    <th>Gramaza</th>
+    <th>Slika</th>
+    <th>Opis</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of GetFiltiraniSuplementi()">
+    <td>{{ item.naziv }}</td>
+    <td>{{ item.cijena }}</td>
+    <td>{{ item.gramaza }}</td>
+    <!-- <td>{{ item.gramaza | date}}</td> formatiranje datuma -->
+   <td>
+     <img class="slike" src="assets/1sup.webp"> <!-- treba skontat format -->
+    </td>
+    <td>{{ item.opis }}</td>
+  </tr>
+  </tbody>
+</table>

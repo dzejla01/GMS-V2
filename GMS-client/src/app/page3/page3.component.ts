@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {config} from "rxjs";
 import {Config} from "../config";
 import {SuplementGetAllResponse} from "./Suplement-GetAll-Response";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-page3',
@@ -10,12 +11,18 @@ import {SuplementGetAllResponse} from "./Suplement-GetAll-Response";
 })
 export class Page3Component {
 
+
+  constructor(public httpclient : HttpClient) {
+
+  }
+
   suplementi: SuplementGetAllResponse[] = [];
+  PretragaNaziv: string = "";
 
   GetSupplements() {
 
     let url = Config.adresa + 'Suplement/GetAll';
-    fetch(url).then(x=>{
+  /*  fetch(url).then(x=>{
       if(x.status != 200){
         alert("Greska "+x.statusText)
         return;
@@ -23,6 +30,16 @@ export class Page3Component {
       x.json().then(r=>{
         this.suplementi = r;
       })
+    }) -- ovo je iz js
+    */
+    this.httpclient.get(url).subscribe((x:any )=>{
+      this.suplementi = x;
     })
+
+
+  }
+
+  GetFiltiraniSuplementi() {
+    return this.suplementi.filter(x=> x.naziv.toLowerCase().includes(this.PretragaNaziv.toLowerCase()));
   }
 }
