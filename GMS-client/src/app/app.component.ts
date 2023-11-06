@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   isVidljivo: boolean = false;
   isVidljivo2:  boolean = false;
+  isVidljivo3:  boolean = false;
+  isVidljivo4:  boolean = false;
 
 }
 

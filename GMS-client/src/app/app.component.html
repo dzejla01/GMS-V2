@@ -2,11 +2,19 @@
 
 <h3 (click)="isVidljivo = !isVidljivo">FAQ {{isVidljivo?'open':'closed'}}</h3>
 <h3 (click)="isVidljivo2 = !isVidljivo2">Recenzije</h3>
+  <h3 (click)="isVidljivo3 = !isVidljivo3">Korisnici na frontendu lakse se cini</h3>
+  <h3 (click)="isVidljivo4 = !isVidljivo4">Korisnici na backendu</h3>
 <div *ngIf="isVidljivo" style="border: 1px solid red">
 <app-page2></app-page2>
 </div>
 <div *ngIf="isVidljivo2" style="border: 1px solid blue">
 <app-page3></app-page3>
+</div>
+  <div *ngIf="isVidljivo3" style="border: 1px solid blue">
+<app-page4></app-page4>
+</div>
+  <div *ngIf="isVidljivo4" style="border: 1px solid blue">
+<app-page4frontend></app-page4frontend>
 </div>
 
 

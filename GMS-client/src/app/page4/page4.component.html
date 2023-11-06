@@ -1,0 +1,36 @@
+
+
+<!--
+<ol>
+  <li *ngFor="let x of suplementi">. {{x.dobavljac.naziv}} {{x.naziv}} {{x.cijena}} </li>
+</ol>
+-->
+<br>
+<h3>Unesite naziv</h3>
+<input [(ngModel)]="PretragaNaziv">
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Ime</th>
+    <th>Prezime</th>
+    <th>Tezina</th>
+    <th>Visina</th>
+    <th>Grad</th>
+    <th>Teretana</th>
+    <th>Spol</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of GetFiltiraniKorisnici()">
+    <td>{{ item.ime }}</td>
+    <td>{{ item.prezime }}</td>
+    <td>{{ item.visina }}</td>
+    <td>{{ item.tezina }}</td>
+    <td>{{ item.gradNaziv }}</td>
+    <td>{{ item.teretanaNaziv }}</td>
+    <td>{{ item.spolNaziv }}</td>
+
+  </tr>
+  </tbody>
+</table>
