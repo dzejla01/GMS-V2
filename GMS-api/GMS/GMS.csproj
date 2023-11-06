@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Endpoint\Suplement\GetAll\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 
