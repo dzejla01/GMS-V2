@@ -17,16 +17,12 @@ namespace GMS.Endpoint.Suplement.GetAll
         }
 
         [HttpGet]
-<<<<<<< HEAD
-        public override async Task<SuplementGetAllResponse> Handle([FromQuery] SuplementGetAllRequest request)
-=======
+
         public override async Task<SuplementGetAllResponse> Handle([FromQuery]SuplementGetAllRequest request)
->>>>>>> 15dfdf123f81952173c277a0cb9ffa83f79011bf
         {
             var suplementi = await db.Suplement
                 .Select(x => new SuplementGetAllResponseRow
                 {
-<<<<<<< HEAD
                     ID = x.ID,
                     Naziv = x.Naziv,
                     Cijena = x.Cijena,
@@ -34,15 +30,7 @@ namespace GMS.Endpoint.Suplement.GetAll
                     Opis = x.Opis,
                     NazivDobavljaca = x.Dobavljac.Naziv,
                     NazivKategorija = x.Kategorija.Naziv
-=======
-                    ID=x.ID,
-                    Naziv=x.Naziv,
-                    Cijena=x.Cijena,
-                    Gramaža=x.Gramaza,
-                    Opis=x.Opis,
-                    NazivDobavljaca=x.Dobavljac.Naziv,
-                    NazivKategorija=x.Kategorija.Naziv  
->>>>>>> 15dfdf123f81952173c277a0cb9ffa83f79011bf
+
                 }).ToListAsync();
 
             return new SuplementGetAllResponse
